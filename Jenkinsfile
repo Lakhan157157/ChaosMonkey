@@ -14,8 +14,10 @@ pipeline {
             #-xel
             git log --oneline > temp.txt
             head -1 temp.txt | awk '{print \$1}'
-            git show ${GIT_COMMIT} | grep -i Author >> temp.txt
-            cat temp.txt
+            Author= `git show ${GIT_COMMIT} | grep -i Author |awk '{print $2}'`
+            echo $Author
+            //git show ${GIT_COMMIT} | grep -i Author >> temp.txt
+            //cat temp.txt
             """.trim()
           	echo "GIT_URL: ${GIT_URL}"
           	echo "Git commit id is: ${commitId}"
