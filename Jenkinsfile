@@ -13,12 +13,13 @@ pipeline {
             git log --oneline > temp.txt
             head -1 temp.txt | awk '{print \$1}'
             Author=\$(git show ${GIT_COMMIT} | grep -i Author | awk '{print \$2}')
+            echo "Author_Name: ${Author}"
             """.trim()
           	echo "GIT_URL: ${GIT_URL}"
           	echo "Git commit id is: ${commitId}"
    //             echo "GIT_PREVIOUS_COMMIT: ${GIT_PREVIOUS_COMMIT}"
           	echo "GIT_BRANCH: ${GIT_BRANCH}" 
-                echo "Author_Name: ${Author}"
+              //  echo "Author_Name: ${Author}"
             //cat temp.txt                   	
           	}
             
