@@ -1,38 +1,22 @@
 #!groovy
-import hudson.slaves.EnvironmentVariablesNodeProperty
-import hudson.EnvVars
-import jenkins.model.*
 pipeline {
   agent any
   environment {
     def commitId = "${GIT_COMMIT}"
     def branchName = "${GIT_BRANCH}"
-    //def author = sh "(script: "$(git --no-pager show -s --format='%an <%ae>' ${BRANCH_NAME})", returnStdout: true)"
     def author = sh(returnStdout: true, script: "git --no-pager show -s --format='%an' ${GIT_BRANCH}")
-    //def author = readFile ('status').trim()
-    //def author = sh (script: "\$(git --no-pager show -s --format='%an <%ae>' ${GIT_BRANCH})", returnStdout: true)
     def temp = ''
-    //def author = sh (
-   // script: 'git show $GIT_COMMIT',
-   // returnStdout: true
-//)".trim()
     }
  stages {
     stage('BitBucketInforation') {
     steps {
 
 
-            sh """
-            #git log --oneline > temp.txt
-            #head -1 temp.txt | awk '{print \$1}'
-            #echo "this is test"
-            """.trim()
           	echo "GIT_URL: ${GIT_URL}"
           	echo "Git commit id is: ${commitId}"
                 echo "GIT_PREVIOUS_COMMIT: ${GIT_PREVIOUS_COMMIT}"
           	echo "GIT_BRANCH: ${GIT_BRANCH}" 
                 echo "Author_Name: ${author}"
-            //cat temp.txt
           	}
             
       
