@@ -1,6 +1,5 @@
 package no.difi.jenkins.pipeline
 
-ErrorHandler errorHandler
 def sshKey
 
 String readCommitId() {
