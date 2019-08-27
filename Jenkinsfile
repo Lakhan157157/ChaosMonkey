@@ -13,8 +13,7 @@ pipeline {
             #!/bin/bash 
             git log --oneline > temp.txt
             head -1 temp.txt | awk '{print \$1}'"""
-            Author=$(git show ${GIT_COMMIT} | grep -i Author |awk '{print $2}')
-            echo "${Author}"
+            sh 'Author=${git show ${GIT_COMMIT} | grep -i Author |awk '{print $2}'}'
             //git show ${GIT_COMMIT} | grep -i Author >> temp.txt
             //cat temp.txt
             //""".trim()
