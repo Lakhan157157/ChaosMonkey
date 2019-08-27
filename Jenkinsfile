@@ -8,11 +8,10 @@ pipeline {
     def commitId = "${GIT_COMMIT}"
     def branchName = "${GIT_BRANCH}"
     def temp = ''
-    def 
-    def author = sh (
+    def author = sh """(
     script: "git show ${GIT_COMMIT} | grep -i Author: | awk '{print \$2}'",
     returnStdout: true
-).trim()
+)""".trim()
     }
  stages {
     stage('BitBucketInforation') {
