@@ -8,14 +8,19 @@ pipeline {
     def commitId = "${GIT_COMMIT}"
     def branchName = "${GIT_BRANCH}"
     def temp = ''
-    def author = sh "(
-    script: 'git show $GIT_COMMIT',
-    returnStdout: true
-)".trim()
+    //def author = sh (
+   // script: 'git show $GIT_COMMIT',
+   // returnStdout: true
+//)".trim()
     }
  stages {
     stage('BitBucketInforation') {
     steps {
+            GIT_COMMIT_EMAIL = sh (
+                        script: 'git show ${GIT_COMMIT} | grep -i Author:',
+                        returnStdout: true
+               ).trim()
+echo "Git committer email: ${GIT_COMMIT_EMAIL}"
             sh """
             #git log --oneline > temp.txt
             #head -1 temp.txt | awk '{print \$1}'
