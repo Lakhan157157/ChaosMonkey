@@ -23,7 +23,6 @@ pipeline {
                 echo "GIT_PREVIOUS_COMMIT: ${GIT_PREVIOUS_COMMIT}"
           	echo "GIT_BRANCH: ${GIT_BRANCH}" 
                 echo "Author_Name: ${author}"
-                echo "commitids: ${commitids}"
             //cat temp.txt
           	}
             
