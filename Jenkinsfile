@@ -15,14 +15,13 @@ pipeline {
             commitIds=\$(git rev-parse HEAD) || { >&2 echo "Failed to find commit id"; exit 1; }
             #git log --oneline > temp.txt
             #head -1 temp.txt | awk '{print \$1}'
-            echo "${GIT_COMMIT}"
             #echo "this is test"
             """.trim()
           	echo "GIT_URL: ${GIT_URL}"
           	echo "Git commit id is: ${commitId}"
                 echo "GIT_PREVIOUS_COMMIT: ${GIT_PREVIOUS_COMMIT}"
           	echo "GIT_BRANCH: ${GIT_BRANCH}" 
-                echo "Author_Name: ${Author}"
+                echo "Author_Name: ${author}"
                 echo "commitids: ${commitids}"
             //cat temp.txt
           	}
