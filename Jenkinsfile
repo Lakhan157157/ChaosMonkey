@@ -1,4 +1,7 @@
 #!groovy
+import hudson.slaves.EnvironmentVariablesNodeProperty
+import hudson.EnvVars
+import jenkins.model.*
 pipeline {
   agent any
   environment {
