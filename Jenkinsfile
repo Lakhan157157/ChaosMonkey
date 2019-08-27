@@ -4,7 +4,7 @@ pipeline {
   environment {
     def commitId = "${GIT_COMMIT}"
     def branchName = "${GIT_BRANCH}"
-    def Author = sh '(git show $GIT_COMMIT | grep -i Author)'
+    //def Author = sh '(git show $GIT_COMMIT | grep -i Author)'
     def temp = ''
     }
  stages {
@@ -14,7 +14,7 @@ pipeline {
             #git log --oneline > temp.txt
             #head -1 temp.txt | awk '{print \$1}'
             echo "${GIT_COMMIT}"
-            Author="${Author}"
+            Author=\$(git show ${GIT_COMMIT} | grep -i Author:)
             #echo "this is test"
             """.trim()
           	echo "GIT_URL: ${GIT_URL}"
