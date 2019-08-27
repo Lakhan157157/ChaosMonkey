@@ -16,10 +16,10 @@ pipeline {
  stages {
     stage('BitBucketInforation') {
     steps {
-             def author = sh (
+             author = sh """(
                         script: 'git show ${GIT_COMMIT} | grep -i Author:',
                         returnStdout: true
-               ).trim()
+               )""".trim()
 echo "Git committer email: ${GIT_COMMIT_EMAIL}"
             sh """
             #git log --oneline > temp.txt
