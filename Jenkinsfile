@@ -12,7 +12,6 @@ pipeline {
     steps {
             sh """
             git fetch origin master >&2
-            author="\$(git --no-pager show -s --format='%an <%ae>' ${branchName})" || { >&2 echo "Failed to extract author"; exit 1; }
             commitIds=\$(git rev-parse HEAD) || { >&2 echo "Failed to find commit id"; exit 1; }
             #git log --oneline > temp.txt
             #head -1 temp.txt | awk '{print \$1}'
