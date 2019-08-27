@@ -4,7 +4,7 @@ pipeline {
   environment {
     def commitId = "${GIT_COMMIT}"
     def branchName = "${GIT_BRANCH}"
-    def Author = sh '(git show $GIT_COMMIT | grep -i Author)'
+    def Author = ''
     def temp = ''
     }
  stages {
