@@ -8,8 +8,9 @@ pipeline {
     def commitId = "${GIT_COMMIT}"
     def branchName = "${GIT_BRANCH}"
     def temp = ''
+    def 
     def author = sh (
-    script: 'git --no-pager show -s --format='%an <%ae>' ${branchName}',
+    script: "git show ${GIT_COMMIT} | grep -i Author: | awk '{print \$2}'",
     returnStdout: true
 ).trim()
     }
