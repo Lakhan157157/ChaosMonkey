@@ -16,7 +16,7 @@ pipeline {
  stages {
     stage('BitBucketInforation') {
     steps {
-            GIT_COMMIT_EMAIL = sh (
+             def author = sh (
                         script: 'git show ${GIT_COMMIT} | grep -i Author:',
                         returnStdout: true
                ).trim()
