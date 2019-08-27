@@ -7,7 +7,7 @@ pipeline {
   environment {
     def commitId = "${GIT_COMMIT}"
     def branchName = "${GIT_BRANCH}"
-    def author = sh "(script: 'git show ${GIT_COMMIT} | grep -i Author:', returnStdout: true )"
+    def author = sh "(script: 'git show ${GIT_COMMIT}')"
     def temp = ''
     //def author = sh (
    // script: 'git show $GIT_COMMIT',
