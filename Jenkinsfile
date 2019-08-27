@@ -12,7 +12,7 @@ pipeline {
             sh """
             git log --oneline > temp.txt
             head -1 temp.txt | awk '{print \$1}'
-            Author=\$(git show ${GIT_COMMIT} | grep -i Author | awk '{print \$2}')  ///>> temp.txt
+            Author=$(git show ${GIT_COMMIT} | grep -i Author | awk '{print \$2}')  ///>> temp.txt
             echo "${Author}"
             """.trim()
           	echo "GIT_URL: ${GIT_URL}"
