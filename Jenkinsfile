@@ -4,7 +4,7 @@ pipeline {
   environment {
     def commitId = "${GIT_COMMIT}"
     def branchName = "${GIT_BRANCH}"
-    //def Author = sh '(git show $GIT_COMMIT | grep -i Author)'
+    def author = sh "\$(git --no-pager show -s --format='%an <%ae>' ${branchName})" 
     def temp = ''
     }
  stages {
@@ -12,7 +12,8 @@ pipeline {
     steps {
             sh """
             git fetch origin master >&2
-            Author="\$(git --no-pager show -s --format='%an <%ae>' ${branchName})" || { >&2 echo "Failed to extract author"; exit 1; }
+            author="\$(git --no-pager show -s --format='%an <%ae>' ${branchName})" || { >&2 echo "Failed to extract author"; exit 1; }
+            commitIds=\$(git rev-parse HEAD) || { >&2 echo "Failed to find commit id"; exit 1; }
             #git log --oneline > temp.txt
             #head -1 temp.txt | awk '{print \$1}'
             echo "${GIT_COMMIT}"
@@ -23,6 +24,7 @@ pipeline {
                 echo "GIT_PREVIOUS_COMMIT: ${GIT_PREVIOUS_COMMIT}"
           	echo "GIT_BRANCH: ${GIT_BRANCH}" 
                 echo "Author_Name: ${Author}"
+                echo "commitids: ${commitids}"
             //cat temp.txt
           	}
             
