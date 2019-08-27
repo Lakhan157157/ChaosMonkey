@@ -1,5 +1,4 @@
 #!groovy
-e
 pipeline {
   agent any
   environment {
