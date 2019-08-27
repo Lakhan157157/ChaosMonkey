@@ -13,12 +13,12 @@ pipeline {
             sh """
             git log --oneline > temp.txt
             head -1 temp.txt | awk '{print \$1}'
-            echo ${Author}
             """.trim()
           	echo "GIT_URL: ${GIT_URL}"
           	echo "Git commit id is: ${commitId}"
             echo "GIT_PREVIOUS_COMMIT: ${GIT_PREVIOUS_COMMIT}"
           	echo "GIT_BRANCH: ${GIT_BRANCH}" 
+                echo "Author_Name: ${Author}"
             //cat temp.txt
           	}
             
