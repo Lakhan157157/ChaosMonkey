@@ -8,6 +8,7 @@ pipeline {
     def commitId = "${GIT_COMMIT}"
     def branchName = "${GIT_BRANCH}"
     def temp = ''
+    def author = ''
     }
  stages {
     stage('BitBucketInforation') {
