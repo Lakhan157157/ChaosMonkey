@@ -8,7 +8,10 @@ pipeline {
     def commitId = "${GIT_COMMIT}"
     def branchName = "${GIT_BRANCH}"
     def temp = ''
-    def author = "\$(git --no-pager show -s --format='%an <%ae>' ${branchName})"
+    def author = = sh (
+    script: 'git --no-pager show -s --format='%an <%ae>' ${branchName}',
+    returnStdout: true
+).trim()
     }
  stages {
     stage('BitBucketInforation') {
