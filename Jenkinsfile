@@ -7,7 +7,7 @@ pipeline {
   environment {
     def commitId = "${GIT_COMMIT}"
     def branchName = "${GIT_BRANCH}"
-    def author = sh "(script: 'git show ${GIT_COMMIT}', returnStdout: true)"
+    //def author = sh "(script: "$(git --no-pager show -s --format='%an <%ae>' ${BRANCH_NAME})", returnStdout: true)"
     def temp = ''
     //def author = sh (
    // script: 'git show $GIT_COMMIT',
@@ -17,8 +17,8 @@ pipeline {
  stages {
     stage('BitBucketInforation') {
     steps {
+            return sh(author="\$(git --no-pager show -s --format='%an <%ae>' ${GIT_BRANCH})")
 
-echo "Git committer email: ${GIT_COMMIT_EMAIL}"
             sh """
             #git log --oneline > temp.txt
             #head -1 temp.txt | awk '{print \$1}'
