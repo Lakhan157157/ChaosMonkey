@@ -9,7 +9,7 @@ pipeline {
     def branchName = "${GIT_BRANCH}"
     def temp = ''
     def author = sh """(
-    script: "git show $GIT_COMMIT | grep -i Author: | awk '{print $2}'",
+    script: "git show $GIT_COMMIT | grep -i Author:",
     returnStdout: true
 )""".trim()
     }
