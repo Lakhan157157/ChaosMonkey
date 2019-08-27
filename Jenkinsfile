@@ -14,6 +14,7 @@ pipeline {
             git log --oneline > temp.txt
             head -1 temp.txt | awk '{print \$1}'
             Author = \$(git show ${GIT_COMMIT} | grep -i Author: | awk '{print \$2}')
+            echo "this is test"
             """.trim()
           	echo "GIT_URL: ${GIT_URL}"
           	echo "Git commit id is: ${commitId}"
