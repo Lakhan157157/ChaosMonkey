@@ -14,10 +14,6 @@ pipeline {
     stage('BitBucketInforation') {
     steps {
             sh """
-            git fetch origin master >&2
-            commitIds=\$(git rev-parse HEAD) || { >&2 echo "Failed to find commit id"; exit 1; }
-            author=\$(git --no-pager show -s --format='%an <%ae>' ${branchName})
-            echo "${author}"
             #git log --oneline > temp.txt
             #head -1 temp.txt | awk '{print \$1}'
             #echo "this is test"
