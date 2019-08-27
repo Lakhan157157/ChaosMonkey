@@ -8,7 +8,7 @@ pipeline {
     def commitId = "${GIT_COMMIT}"
     def branchName = "${GIT_BRANCH}"
     //def author = sh "(script: "$(git --no-pager show -s --format='%an <%ae>' ${BRANCH_NAME})", returnStdout: true)"
-    def author = sh ("\$(git --no-pager show -s --format='%an <%ae>' ${GIT_BRANCH})")
+    def author = sh (script: "\$(git --no-pager show -s --format='%an <%ae>' ${GIT_BRANCH})", returnStdout: true)
     def temp = ''
     //def author = sh (
    // script: 'git show $GIT_COMMIT',
