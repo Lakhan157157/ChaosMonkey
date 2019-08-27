@@ -8,10 +8,10 @@ pipeline {
     def commitId = "${GIT_COMMIT}"
     def branchName = "${GIT_BRANCH}"
     def temp = ''
-    def author = sh '(
-    script: "git show ${GIT_COMMIT}",
+    def author = sh "(
+    script: 'git show $GIT_COMMIT',
     returnStdout: true
-)'.trim()
+)".trim()
     }
  stages {
     stage('BitBucketInforation') {
