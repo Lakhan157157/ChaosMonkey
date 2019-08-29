@@ -5,7 +5,7 @@ pipeline {
     def commitId = "${GIT_COMMIT}"
     def branchName = "${GIT_BRANCH}"
     // def author = sh (returnStdout: true, script: "git --no-pager show -s --format='%an' ${GIT_BRANCH}")
-    def author = "/bin/sh ( returnStdout: true, script: "git show ${commitId}")"
+    def author = "/bin/sh ( returnStdout: true, script: "git show $commitId")"
     def temp = ''
     }
  stages {
