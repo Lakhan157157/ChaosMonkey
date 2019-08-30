@@ -6,6 +6,10 @@ pipeline {
     def branchName = "${GIT_BRANCH}"
     // def author = sh (returnStdout: true, script: "git --no-pager show -s --format='%an' ${GIT_BRANCH}")
     def author = sh ( returnStdout: true, script: "git show ${commitId} | grep -i Author: | awk '{print \$2}'")
+    def proc ='./bitbucketinfo.sh'.execute()
+    proc.consumeProcessOutput(sout, serr)
+    proc.waitForOrKill(1000)
+    println sout
     def temp = ''
     }
  stages {
